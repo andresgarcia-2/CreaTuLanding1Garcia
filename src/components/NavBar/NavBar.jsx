@@ -7,7 +7,7 @@ const NavBar = () => {
         <div className="nav-container">
         <div className="nav-logo">
             <i className="fas fa-paint-roller"></i>
-            <h2>PintoresExpertos</h2>
+            <h2>M.A.G. Soluciones Integrales</h2>
         </div>
         
         <ul className="nav-menu">
