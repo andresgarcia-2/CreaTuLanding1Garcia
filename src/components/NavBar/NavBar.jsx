@@ -1,13 +1,12 @@
-import React from "react";
-import CartWidget from "../CartWidget/CartWidget";
-import logo from '../../assets/logo2.PNG';
+import React from 'react';
+import CartWidget from '../CartWidget/CartWidget';
 
 const NavBar = () => {
     return (
     <nav className="navbar">
         <div className="nav-container">
-            <div className="nav-logo">
-            <img src={logo} alt="Soluciones Integrales logo" className="logo-img" />
+        <div className="nav-logo">
+            <i className="fas fa-paint-roller"></i>
             <h2>PintoresExpertos</h2>
         </div>
         
@@ -16,11 +15,10 @@ const NavBar = () => {
             <a href="#" className="nav-link">Inicio</a>
             </li>
             <li className="nav-item">
-            <a href="#" className="nav-link">Quienes somos</a>
+            <a href="#" className="nav-link">Sobre Nosotros</a>
             </li>
             <li className="nav-item">
-            <a href="#" className="nav-link">Servicios de Pintura
-            </a>
+            <a href="#" className="nav-link">Nuestros Trabajos</a>
             </li>
             <li className="nav-item">
             <a href="#" className="nav-link">Presupuestos</a>
