@@ -1,12 +1,13 @@
-import React from 'react';
-import CartWidget from '../CartWidget/CartWidget';
+import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
+import logo from '../../assets/logo2.PNG';
 
 const NavBar = () => {
     return (
     <nav className="navbar">
         <div className="nav-container">
-        <div className="nav-logo">
-            <i className="fas fa-paint-roller"></i>
+            <div className="nav-logo">
+            <img src={logo} alt="Soluciones Integrales logo" className="logo-img" />
             <h2>PintoresExpertos</h2>
         </div>
         

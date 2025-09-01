@@ -40,3 +40,9 @@
 .read-the-docs {
   color: #888;
 }
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  margin-right: 0.5rem;
+}
