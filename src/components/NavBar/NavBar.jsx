@@ -17,8 +17,17 @@ const NavBar = () => {
             <li className="nav-item">
             <a href="#" className="nav-link">Sobre Nosotros</a>
             </li>
-            <li className="nav-item">
-            <a href="#" className="nav-link">Nuestros Trabajos</a>
+            <li className="nav-item dropdown">
+            <a href="#" className="nav-link dropdown-toggle">
+                Servicios <i className="fas fa-chevron-down"></i>
+            </a>
+            <ul className="dropdown-menu">
+                <li><a href="#" className="dropdown-link">🏠 Pintura Residencial</a></li>
+                <li><a href="#" className="dropdown-link">🏢 Pintura Comercial</a></li>
+                <li><a href="#" className="dropdown-link">🏭 Pintura Industrial</a></li>
+                <li><a href="#" className="dropdown-link">🎨 Acabados Especiales</a></li>
+                <li><a href="#" className="dropdown-link">🛠️ Servicios Adicionales</a></li>
+            </ul>
             </li>
             <li className="nav-item">
             <a href="#" className="nav-link">Presupuestos</a>
