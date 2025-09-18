@@ -273,4 +273,100 @@ body {
   background-color: #FFD700;
   color: #000000;
   transform: translateX(5px);
+} 
+
+.item-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #FFD700;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover img {
+  transform: scale(1.05);
+}
+
+.item-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.item-card {
+  background: linear-gradient(135deg, #333333 0%, #000000 100%);
+  border: 2px solid #FFD700;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(255, 215, 0, 0.2);
+}
+
+.item-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+}
+
+.item-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.item-card:hover img {
+  transform: scale(1.05);
+}
+
+.item-info {
+  padding: 1.5rem;
+}
+
+.item-info h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.item-price {
+  color: #FFD700;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.item-description {
+  color: #cccccc;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.btn-detail {
+  display: inline-block;
+  background-color: #FFD700;
+  color: #000000;
+  padding: 0.8rem 1.5rem;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  border: 2px solid #FFD700;
+}
+
+.btn-detail:hover {
+  background-color: transparent;
+  color: #FFD700;
+  transform: translateY(-2px);
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-link:hover {
+    color: #FFD700;
 }

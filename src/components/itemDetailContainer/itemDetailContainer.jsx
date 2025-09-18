@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import ItemDetail from '../itemDetail/itemDetail'
+import ItemDetail from '../itemDetail/itemDetail';
 
 const ItemDetailContainer = () => {
     const [product, setProduct] = useState(null);
@@ -16,54 +16,60 @@ const ItemDetailContainer = () => {
                         name: 'Pintura Interior Premium',
                         price: 25000,
                         category: 'residencial',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Pintura+Interior',
-                        description: 'Pintura de alta calidad para interiores residenciales. Fácil aplicación, secado rápido y acabado perfecto.',
+                        type: 'interior',
+                        image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=400&h=300&fit=crop',
+                        description: 'Pintura de alta calidad para interiores residenciales. Acabado mate y satinado disponible.',
                         stock: 15
                     },
                     {
                         id: '2',
-                        name: 'Pintura Exterior Resistente',
-                        price: 30000,
-                        category: 'residencial',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Pintura+Exterior',
-                        description: 'Pintura resistente a la intemperie para exteriores. Protección UV y resistencia a la humedad.',
-                        stock: 10
-                    },
-                    {
-                        id: '3',
-                        name: 'Pintura Comercial Pro',
+                        name: 'Pintura Decorativa Texturada',
                         price: 35000,
-                        category: 'comercial',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Pintura+Comercial',
-                        description: 'Pintura profesional para espacios comerciales. Alta durabilidad y fácil mantenimiento.',
+                        category: 'residencial',
+                        type: 'decorativa',
+                        image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=400&h=300&fit=crop',
+                        description: 'Pintura con efectos decorativos y texturas especiales para crear ambientes únicos.',
                         stock: 8
                     },
                     {
+                        id: '3',
+                        name: 'Microcemento Profesional',
+                        price: 55000,
+                        category: 'residencial',
+                        type: 'microcemento',
+                        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=300&fit=crop',
+                        description: 'Microcemento para pisos y paredes. Acabado moderno y resistente al agua.',
+                        stock: 10
+                    },
+                    {
                         id: '4',
-                        name: 'Pintura Industrial Heavy Duty',
-                        price: 45000,
-                        category: 'industrial',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Pintura+Industrial',
-                        description: 'Pintura resistente para uso industrial. Resistente a químicos y condiciones extremas.',
-                        stock: 5
+                        name: 'Empapelado Premium',
+                        price: 18000,
+                        category: 'residencial',
+                        type: 'empapelado',
+                        image: 'https://i.pinimg.com/originals/57/3c/83/573c83b0c113364ca422575f122569793.jpg',
+                        description: 'Papel tapiz de alta calidad. Diseños clásicos y modernos disponibles.',
+                        stock: 20
                     },
                     {
                         id: '5',
-                        name: 'Textura Decorativa',
-                        price: 28000,
-                        category: 'especiales',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Textura+Decorativa',
-                        description: 'Acabado decorativo con textura especial. Crea efectos únicos en tus paredes.',
+                        name: 'Pintura Exterior Resistente',
+                        price: 32000,
+                        category: 'residencial',
+                        type: 'exterior',
+                        image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=400&h=300&fit=crop',
+                        description: 'Pintura exterior resistente a UV, lluvia y cambios climáticos extremos.',
                         stock: 12
                     },
                     {
                         id: '6',
-                        name: 'Kit de Herramientas Pro',
-                        price: 15000,
-                        category: 'adicionales',
-                        image: 'https://via.placeholder.com/400x300/FFD700/000000?text=Kit+Herramientas',
-                        description: 'Kit completo de herramientas profesionales. Incluye brochas, rodillos y accesorios.',
-                        stock: 20
+                        name: 'Kit Completo de Acabados',
+                        price: 45000,
+                        category: 'residencial',
+                        type: 'kit',
+                        image: 'https://www.benjaminmoore.com/es-us/_assets_benjaminmoore_com/transform/2a4e4285-fc5e-4980-a5b4-52e34ef01db5/image_PaintingToolKit_1080x1080',
+                        description: 'Kit que incluye pintura interior, exterior y herramientas básicas.',
+                        stock: 7
                     }
                 ];
 

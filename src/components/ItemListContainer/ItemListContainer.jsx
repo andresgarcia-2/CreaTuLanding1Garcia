@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import ItemList from '../itemList/itemList';
+import { useParams, Link } from 'react-router-dom';
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
@@ -16,50 +15,50 @@ const ItemListContainer = ({ greeting }) => {
                         name: 'Pintura Interior Premium',
                         price: 25000,
                         category: 'residencial',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Pintura+Interior',
-                        description: 'Pintura de alta calidad para interiores residenciales'
+                        image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=300&h=200&fit=crop',
+                        description: 'Pintura de alta calidad para interiores residenciales. Acabado mate y satinado disponible.'
                     },
                     {
                         id: '2',
-                        name: 'Pintura Exterior Resistente',
-                        price: 30000,
+                        name: 'Pintura Decorativa Texturada',
+                        price: 35000,
                         category: 'residencial',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Pintura+Exterior',
-                        description: 'Pintura resistente a la intemperie para exteriores'
+                        image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=300&h=200&fit=crop',
+                        description: 'Pintura con efectos decorativos y texturas especiales para crear ambientes únicos.'
                     },
                     {
                         id: '3',
-                        name: 'Pintura Comercial Pro',
-                        price: 35000,
-                        category: 'comercial',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Pintura+Comercial',
-                        description: 'Pintura profesional para espacios comerciales'
+                        name: 'Microcemento Profesional',
+                        price: 55000,
+                        category: 'residencial',
+                        image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=200&fit=crop',
+                        description: 'Microcemento para pisos y paredes. Acabado moderno y resistente al agua.'
                     },
                     {
                         id: '4',
-                        name: 'Pintura Industrial Heavy Duty',
-                        price: 45000,
-                        category: 'industrial',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Pintura+Industrial',
-                        description: 'Pintura resistente para uso industrial'
+                        name: 'Empapelado Premium',
+                        price: 18000,
+                        category: 'residencial',
+                        image: 'https://i.pinimg.com/originals/57/3c/83/573c83b0c113364ca422575f122569793.jpg',
+                        description: 'Papel tapiz de alta calidad. Diseños clásicos y modernos disponibles.'
                     },
                     {
                         id: '5',
-                        name: 'Textura Decorativa',
-                        price: 28000,
-                        category: 'especiales',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Textura+Decorativa',
-                        description: 'Acabado decorativo con textura especial'
+                        name: 'Pintura Exterior Resistente',
+                        price: 32000,
+                        category: 'residencial',
+                        image: 'https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?w=300&h=200&fit=crop',
+                        description: 'Pintura exterior resistente a UV, lluvia y cambios climáticos extremos.'
                     },
                     {
                         id: '6',
-                        name: 'Kit de Herramientas Pro',
-                        price: 15000,
-                        category: 'adicionales',
-                        image: 'https://via.placeholder.com/300x200/FFD700/000000?text=Kit+Herramientas',
-                        description: 'Kit completo de herramientas profesionales'
+                        name: 'Kit Completo de Acabados',
+                        price: 45000,
+                        category: 'residencial',
+                        image: 'https://www.benjaminmoore.com/es-us/_assets_benjaminmoore_com/transform/2a4e4285-fc5e-4980-a5b4-52e34ef01db5/image_PaintingToolKit_1080x1080',
+                        description: 'Kit que incluye pintura interior, exterior y herramientas básicas.'
                     }
-                ]
+                ];
 
                 const filteredProducts = categoryId 
                     ? allProducts.filter(product => product.category === categoryId)
@@ -96,7 +95,22 @@ const ItemListContainer = ({ greeting }) => {
             {categoryId && (
                 <h2>Categoría: {categoryId.charAt(0).toUpperCase() + categoryId.slice(1)}</h2>
             )}
-            <ItemList products={products} />
+            
+            <div className="item-list">
+                {products.map(product => (
+                    <div key={product.id} className="item-card">
+                        <img src={product.image} alt={product.name} />
+                        <div className="item-info">
+                            <h3>{product.name}</h3>
+                            <p className="item-price">${product.price.toLocaleString()}</p>
+                            <p className="item-description">{product.description}</p>
+                            <Link to={`/item/${product.id}`} className="btn-detail">
+                                Ver Detalle
+                            </Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
