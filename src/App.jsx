@@ -26,7 +26,7 @@ function App() {
           <Route 
             path="/about" 
             element={<div className="page-container"><h1>Sobre Nosotros</h1><p>Página en construcción...</p></div>} 
-          />
+          /> 
           <Route 
             path="/presupuestos" 
             element={<div className="page-container"><h1>Presupuestos</h1><p>Página en construcción...</p></div>} 
