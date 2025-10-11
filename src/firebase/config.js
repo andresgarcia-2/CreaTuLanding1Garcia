@@ -1,15 +1,21 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import App from "../App";
 
 const firebaseConfig = {
-    apiKey: "TU_API_KEY",
-    authDomain: "TU_AUTH_DOMAIN",
-    projectId: "TU_PROJECT_ID",
-    storageBucket: "TU_STORAGE_BUCKET",
-    messagingSenderId: "TU_MESSAGING_SENDER_ID",
-    appId: "TU_APP_ID"
+    apiKey: "AIzaSyCopo_Z17CIfM-lr7QLMlK8kH3sl8aRQ2M",
+    authDomain: "proyectofinalgarciapaez.firebaseapp.com",
+    projectId: "proyectofinalgarciapaez",
+    storageBucket: "proyectofinalgarciapaez.firebasestorage.app",
+    messagingSenderId: "46488667",
+    appId: "1:46488667:web:c7bc0930cd7b8624e7737e",
+    measurementId: "G-BS6S0VJL2K"
 };
 
-const app = initializeApp(firebaseConfig);
+let app;
+if (!getApps().length) {
+    app = initializeApp(firebaseConfig);
+} else {
+    app = getApp();
+}
+
 export const db = getFirestore(app);

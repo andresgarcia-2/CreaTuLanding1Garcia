@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 import ItemDetail from '../itemDetail/itemDetail';
 
 const ItemDetailContainer = () => {
@@ -7,7 +9,62 @@ const ItemDetailContainer = () => {
     const [loading, setLoading] = useState(true);
     const { itemId } = useParams();
 
-    const getProductById = (id) => {
+    useEffect(() => {
+        setLoading(true);
+
+        const productDoc = doc(db, 'products', itemId);
+
+        getDoc(productDoc)
+            .then(snapshot => {
+                if (snapshot.exists()) {
+                    setProduct({
+                        id: snapshot.id,
+                        ...snapshot.data()
+                    });
+                } else {
+                    console.log('Producto no encontrado');
+                    setProduct(null);
+                }
+            })
+            .catch(error => {
+                console.error('Error al obtener producto:', error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [itemId]);
+
+    if (loading) {
+        return (
+            <div className="item-detail-container">
+                <div className="loading">
+                    <i className="fas fa-spinner fa-spin"></i>
+                    <p>Cargando producto...</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (!product) {
+        return (
+            <div className="item-detail-container">
+                <div className="not-found">
+                    <h2>Producto no encontrado</h2>
+                    <p>El producto que buscas no existe.</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="item-detail-container">
+            <ItemDetail product={product} />
+        </div>
+    );
+};
+
+
+   /* const getProductById = (id) => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const allProducts = [
@@ -115,6 +172,6 @@ const ItemDetailContainer = () => {
             <ItemDetail product={product} />
         </div>
     );
-};
+};*/
 
 export default ItemDetailContainer;

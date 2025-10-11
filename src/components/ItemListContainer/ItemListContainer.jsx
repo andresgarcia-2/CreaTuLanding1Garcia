@@ -1,12 +1,79 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { collection, getDocs, query, where } from 'firebase/firestore';
+import { db } from '../../firebase/config';
 
 const ItemListContainer = ({ greeting }) => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const { categoryId } = useParams();
 
-    const getProducts = () => {
+    useEffect(() => {
+        setLoading(true);
+
+        const productsCollection = collection(db, "products");
+
+        const q = categoryId
+        ? query(productsCollection, where("category","==", categoryId))
+        : productsCollection;
+
+        getDocs(q)
+            .then(snapshot => {
+                const productsData = snapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setProducts(productsData)
+            })
+            .catch(error => {
+                console.error("Error al obtener productos", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, [categoryId]);
+
+    if (loading) {
+        return (
+            <div className="item-list-container">
+                <div className="loading">
+                    <i className="fas fa-spinner fa-spin"></i>
+                    <p>Cargando productos...</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="item-list-container">
+            <h1>{greeting}</h1>
+            {categoryId && (
+                <h2>Categoría: {categoryId.charAt(0).toUpperCase() + categoryId.slice(1)}</h2>
+            )}
+            
+            <div className="item-list">
+                {products.map(product => (
+                    <div key={product.id} className="item-card">
+                        <img src={product.image} alt={product.name} />
+                        <div className="item-info">
+                            <h3>{product.name}</h3>
+                            <p className="item-price">${product.price.toLocaleString()}</p>
+                            <p className="item-description">{product.description}</p>
+                            <Link to={`/item/${product.id}`} className="btn-detail">
+                                Ver Detalle
+                            </Link>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+
+
+
+/*    const getProducts = () => {
         return new Promise((resolve) => {
             setTimeout(() => {
                 const allProducts = [
@@ -113,6 +180,6 @@ const ItemListContainer = ({ greeting }) => {
             </div>
         </div>
     );
-};
+};*/
 
 export default ItemListContainer;

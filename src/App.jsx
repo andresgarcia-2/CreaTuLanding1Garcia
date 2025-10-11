@@ -1,13 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import NavBar from "./components/NavBar/NavBar";
 import ItemDetailContainer from './components/itemDetailContainer/itemDetailContainer';
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
+import { seedProducts } from './utils/seedProducts';
 import './App.css';
 
 function App() {
+
+ // useEffect(() => {
+ //   seedProducts();
+ // }, []);
+
+
   return (
     <div className="App">
       <BrowserRouter>
