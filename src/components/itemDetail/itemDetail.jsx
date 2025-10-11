@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ItemCount from '../itemCount/itemCount';
+import { useCart } from '../../context/CartContext';
 
 const ItemDetail = ({ product }) => {
-    const [quantity, setQuantity] = useState(0);
+    const [quantityAdded, setQuantityAdded] = useState(0);
+
+    const { addItem } = useCart();
 
     const handleOnAdd = (quantity) => {
-        setQuantity(quantity);
-        console.log(`Agregaste ${quantity} unidades de ${product.name}`);
+        setQuantityAdded(quantity);
+        addItem(product, quantity);
     };
 
     return (
@@ -21,7 +25,7 @@ const ItemDetail = ({ product }) => {
                 <p className="item-detail-stock">Stock disponible: {product.stock}</p>
         
                 <div className="item-detail-actions">
-                    {quantity === 0 ? (
+                    {quantityAdded === 0 ? (
                         <ItemCount 
                             stock={product.stock} 
                             initial={1} 
@@ -29,11 +33,9 @@ const ItemDetail = ({ product }) => {
                         />
                     ) : (
                         <div className="added-to-cart">
-                            <p>¡Agregaste {quantity} unidades al carrito!</p>
-                            <button className="btn-primary">Ir al Carrito</button>
-                            <button className="btn-secondary" onClick={() => setQuantity(0)}>
-                                Seguir Comprando
-                            </button>
+                            <p>✅ ¡Agregaste {quantityAdded} unidades al carrito!</p>
+                            <Link to="/cart" className="btn-primary">Ir al Carrito</Link>
+                            <Link to="/" className="btn-secondary">Seguir Comprando</Link>
                         </div>
                     )}
                 </div>
