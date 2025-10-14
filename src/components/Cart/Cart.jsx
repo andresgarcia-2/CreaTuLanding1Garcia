@@ -12,7 +12,7 @@ const Cart = () => {
                 <i className="fas fa-shopping-cart"></i>
                 <h2>Tu carrito esta vacio</h2>
                 <p>¡Agrega productos para comenzar tu compra!</p>
-                <link to="/" className="btn-primary">Ver Productos</link>
+                <Link to="/" className="btn-primary">Ver Productos</Link>
             </div>
         );
     }

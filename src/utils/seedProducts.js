@@ -1,7 +1,6 @@
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../firebase/config';
 
-// Array con todos tus productos
 const products = [
     {
         name: 'Pintura Interior Premium',
@@ -53,7 +52,6 @@ const products = [
     }
 ];
 
-// Función que sube los productos a Firebase
 export const seedProducts = async () => {
     try {
         const productsCollection = collection(db, 'products');
